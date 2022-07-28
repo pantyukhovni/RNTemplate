@@ -1,23 +1,24 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import Spinner from '@app/components/Spinner';
+import WIPComponent from '@app/components/WIPSComponent';
+import { persistor, store } from '@app/store';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={{ fontSize: 25 }}>RNTemplate</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <PersistGate loading={<Spinner />} persistor={persistor}>
+      <Provider store={store}>
+        <SafeAreaView>
+          <ScrollView>
+            <WIPComponent />
+          </ScrollView>
+        </SafeAreaView>
+      </Provider>
+    </PersistGate>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-});
 
 export default App;

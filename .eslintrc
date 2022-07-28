@@ -11,8 +11,11 @@
       }
     }
   },
-  "extends": [],
-
+  "extends": [
+    // "eslint-config-airbnb/rules/react",
+    // "eslint-config-airbnb/rules/react-a11y",
+    "eslint-config-airbnb/hooks"
+  ],
   "plugins": [
     "eslint-plugin-no-inline-styles",
     "@typescript-eslint",
@@ -48,6 +51,11 @@
     "react/destructuring-assignment": "warn",
     "import/no-default-export": "error",
     "import/no-anonymous-default-export": "error",
+    "import/prefer-default-export": "off", // default imports is evil
+    "import/default": "error", // enable default import validation
+
+    "import/no-extraneous-dependencies": "off", // need fine tuning
+
     "import/order": [
       "error",
       {
@@ -72,24 +80,82 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": []
+        "pathGroupsExcludedImportTypes": ["@app/**"]
       }
     ],
     "consistent-return": "warn",
     "no-useless-escape": "warn",
     "no-nested-ternary": "warn",
-    "no-param-reassign": "warn",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["acc", "state", "prevState", " res"]
+      }
+    ],
     "object-curly-spacing": ["error", "always"],
     "require-await": "error",
     "comma-dangle": ["error", "always-multiline"],
     "no-console": "warn",
     "import/no-duplicates": "error",
-    "@typescript-eslint/no-use-before-define": "off",
-    "no-inline-styles/no-inline-styles": 1,
-    "prettier/prettier": [
+    "@typescript-eslint/ban-types": [
       "error",
       {
-        "no-inline-styles": false
+        "types": {
+          "String": { "message": "Use string instead", "fixWith": "string" },
+          "Boolean": { "message": "Use boolean instead", "fixWith": "boolean" },
+          "Number": { "message": "Use number instead", "fixWith": "number" },
+          "Object": {
+            "message": "Use Record<string, unknown> instead",
+            "fixWith": "Record<string, unknown>"
+          },
+          "object": {
+            "message": "Use Record<string, unknown> instead",
+            "fixWith": "Record<string, unknown>"
+          },
+          "any": {
+            "message": "Use unknown instead",
+            "fixWith": " unknown"
+          }
+        },
+        "extendDefaults": false
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": false
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": ["camelCase", "PascalCase"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "enumMember",
+        "format": ["UPPER_CASE", "snake_case"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "allow"
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase", "UPPER_CASE"]
+      },
+      {
+        "selector": "property",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE", "snake_case"],
+        "leadingUnderscore": "allow"
       }
     ]
   }
