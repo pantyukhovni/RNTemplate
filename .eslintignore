@@ -1,0 +1,10 @@
+# folders
+node_modules/
+scripts/
+
+# files
+babel.config.js
+metro.config.js
+/scripts
+
+*.js

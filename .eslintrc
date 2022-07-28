@@ -1,0 +1,96 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx", ".native.js"]
+      }
+    }
+  },
+  "extends": [],
+
+  "plugins": [
+    "eslint-plugin-no-inline-styles",
+    "@typescript-eslint",
+    "prettier",
+    "import",
+    "react-hooks",
+    "react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/await-thenable": ["error"],
+    "@typescript-eslint/no-extraneous-class": "error",
+    "@typescript-eslint/no-misused-new": "error",
+    "@typescript-eslint/no-unused-expressions": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-redeclare": "off",
+    "@typescript-eslint/no-redeclare": ["error"],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/destructuring-assignment": "warn",
+    "import/no-default-export": "error",
+    "import/no-anonymous-default-export": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@app/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": []
+      }
+    ],
+    "consistent-return": "warn",
+    "no-useless-escape": "warn",
+    "no-nested-ternary": "warn",
+    "no-param-reassign": "warn",
+    "object-curly-spacing": ["error", "always"],
+    "require-await": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "no-console": "warn",
+    "import/no-duplicates": "error",
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-inline-styles/no-inline-styles": 1,
+    "prettier/prettier": [
+      "error",
+      {
+        "no-inline-styles": false
+      }
+    ]
+  }
+}
