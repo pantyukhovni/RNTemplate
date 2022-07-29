@@ -4,4 +4,6 @@ type MockDate = {
   completed: boolean;
 };
 
-export type { MockDate };
+type Merge<T> = { [K in keyof T]: T[K] };
+
+export type { Merge, MockDate };
