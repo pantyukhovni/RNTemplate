@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Spinner from '@app/components/Spinner';
 import RootNavigation from '@app/navigation/RootNavigation';
 import { persistor, store } from '@app/store';
+import { Container } from '@app/ui/components/Container';
 
 const App = () => {
   return (
