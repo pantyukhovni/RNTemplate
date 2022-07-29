@@ -157,6 +157,14 @@
         "format": ["camelCase", "PascalCase", "UPPER_CASE", "snake_case"],
         "leadingUnderscore": "allow"
       }
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
+    "no-inline-styles/no-inline-styles": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "no-inline-styles": false
+      }
     ]
   }
 }

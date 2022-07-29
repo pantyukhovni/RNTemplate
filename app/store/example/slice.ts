@@ -1,36 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
+import type { MockDate } from '@app/common/types';
+
+import type { PayloadAction, RootState } from '../types';
 import { SlicesName } from '../types';
 
-// export const todosAdapter = createEntityAdapter({
-//   selectId: (todos) => todos.todoId,
-// });
+import type { ListState } from './types';
 
-const initialState = {};
+export const selectId = ({ id }: { id: string }) => id;
+
+const suggestionsAdapter = createEntityAdapter<MockDate>({
+  selectId,
+});
+
+export const listSelector = suggestionsAdapter.getSelectors<RootState>(
+  ({ list }) => list.suggestions,
+);
+
+const initialState: ListState = {
+  suggestions: suggestionsAdapter.getInitialState(),
+};
 
 const slice = createSlice({
   initialState,
-  name: SlicesName.TODO,
+  name: SlicesName.LIST,
   reducers: {
-    // addTodo: todosAdapter.addOne,
-    // toggleTodo: (state, { payload }) => {
-    //   const { id } = payload;
-    //   const todo = state.entities[id];
-    //   todo.completed = !todo.completed;
-    // },
-    // updateTodo: (
-    //   state,
-    //   { payload }: PayloadAction<{ id: string; text: string }>,
-    // ) => {
-    //   const { id, text } = payload;
-    //   const todo = state.entities[id];
-    //   todo.text = text;
-    // },
-    // deleteTodo: todosAdapter.removeOne,
+    setListSuggestion: (state, { payload }: PayloadAction<MockDate[]>) => {
+      suggestionsAdapter.addMany(state.suggestions, payload);
+    },
   },
 });
 
 export const {
-  // actions: { addTodo, deleteTodo, toggleTodo, updateTodo },
-  reducer: todosReducer,
+  actions: { setListSuggestion },
+  reducer: listReducer,
 } = slice;

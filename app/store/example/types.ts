@@ -1,11 +1,9 @@
 import type { EntityState } from '@reduxjs/toolkit';
 
-type ExampleInitialState = {
-  exampleState: EntityState<any>;
+import type { MockDate } from '@app/common/types';
+
+type ListState = {
+  suggestions: EntityState<MockDate>;
 };
 
-type SetSomeDateAction = {
-  books: string[];
-};
-
-export type { SetSomeDateAction, ExampleInitialState };
+export type { ListState };

@@ -13,7 +13,7 @@ import type {
   RootState,
 } from '@app/store/types';
 
-import { todosReducer } from './example/slice';
+import { listReducer } from './example/slice';
 
 const devTools = Config.API_URL === '';
 
@@ -22,7 +22,7 @@ const dependencies: Dependencies = {
 };
 
 const reducers: Reducers = {
-  todos: todosReducer,
+  list: listReducer,
 };
 
 const persistConfig = {
@@ -35,29 +35,6 @@ const persistConfig = {
 const rootReducer = combineReducers(reducers);
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// const preloadedState = {
-//   todos: {
-//     ids: ['1', '2', '3'],
-//     entities: {
-//       []: {
-//         id: '1',
-//         text: 'Some text',
-//         completed: true
-//       },
-//       2: {
-//         id: '1',
-//         text: 'Some text',
-//         completed: true
-//       },
-//       3: {
-//         id: '1',
-//         text: 'Some text',
-//         completed: true
-//       }
-//     }
-//   }
-// }
 
 const store = configureStore<RootState, AnyAction, Middlewares>({
   reducer: persistedReducer,

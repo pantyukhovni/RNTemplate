@@ -1,10 +1,5 @@
-// import type { RootState } from '../types';
+import { listSelector } from './slice';
 
-// import { todosAdapter } from './slice';
+export const allListSelector = listSelector.selectAll;
 
-// const exampleSelector = todosAdapter.getSelectors<RootState>(
-//   ({ todos }) => todos,
-// );
-
-// export const getExampleIdsSelector = exampleSelector.selectIds;
-// export const getExampleEntitiesSelector = exampleSelector.selectEntities;
+export const listEntitiesSelector = listSelector.selectEntities;
