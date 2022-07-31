@@ -14,4 +14,4 @@ const WIPComponent = () => {
   );
 };
 
-export default WIPComponent;
+export { WIPComponent };

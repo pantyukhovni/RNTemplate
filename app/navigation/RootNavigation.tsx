@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 
-import ExampleScreen from '@app/screens/ExampleScreen';
+import { ExampleScreen } from '@app/screens/ExampleScreen';
 
 import { getBaseStackScreenOptions } from './services/getBaseStackOptions';
 import type { RootStackParamsList } from './types/StackTypes';
@@ -22,4 +22,4 @@ const RootNavigation = () => {
   );
 };
 
-export default RootNavigation;
+export { RootNavigation };
