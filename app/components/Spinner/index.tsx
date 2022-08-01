@@ -11,7 +11,7 @@ function Spinner({ size }: OwnProps) {
   return <ActivityIndicator size={size} style={styles.container} />;
 }
 
-export default Spinner;
+export { Spinner };
 
 const styles = StyleSheet.create({
   container: {

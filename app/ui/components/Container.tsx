@@ -6,12 +6,10 @@ type OwnProps<T> = PropsWithChildren<T> & {
   component: ComponentType<T>;
 };
 
-const Container = <P, T extends PropsWithChildren<P>>({
-  component: View,
-  ...props
-}: OwnProps<T>) => {
-  // @ts-ignore FIXME: исправить типы
-  return <View {...props} style={styles.container} />;
+const Container = <T,>({ component: Component, ...props }: OwnProps<T>) => {
+  return (
+    <Component {...(props as PropsWithChildren<T>)} style={styles.container} />
+  );
 };
 
 export { Container };

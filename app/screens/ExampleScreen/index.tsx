@@ -4,4 +4,4 @@ const ExampleScreen = () => {
   return <></>;
 };
 
-export default ExampleScreen;
+export { ExampleScreen };

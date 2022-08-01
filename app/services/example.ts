@@ -1,8 +1,6 @@
 class Example {
   // методы для работы с api
-  getLog = () => {
-    console.log('');
-  };
+  getLog = () => {};
 }
 
 const exampleServices = new Example();
